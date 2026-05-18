@@ -2,26 +2,17 @@ pipeline {
     agent {
         label 'java-workernode'
     }
+    environment {
+        // setting environment variable  key value ${key}
+        name = "shiva"
+        course = "Jenkins"
+    }
     stages {
-        stage('Buid') {
+        stage ('FirstStage') {
             steps {
-                echo "build stage from main branch"
-            }
-        }
-        stage('Scans') {
-            steps {
-                echo "scan stage from main branch"
-            }
-        }
-        stage('dockerBuild') {
-            steps {
-                echo "docker build stage from main branch"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo "deploy stage from main branch"
+                echo "welcome ${name}"
+                echo "you have enrolled to ${course} course"
             }
         }
     }
-}
+}  
