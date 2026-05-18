@@ -1,32 +1,33 @@
+// parameters
 pipeline {
     agent {
         label 'java-workernode'
     }
-    environment {
-        // setting environment variable  key value ${key}
-        name = "Arju"
-        course = "Jenkins"
-        SONAR_CREDS = credentials('sonar_creds')
+
+    // tools {
+
+    // }
+
+    // environment {
+
+    // }
+
+    parameters {
+        string(name: 'APPLICATION_NAME', defaultValue: 'my-app', description: 'Name of the application')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'would you like to run tests, buddy?')
+        choice(name: 'ENV', description: 'Select the environment', choices: ['dev', 'test', 'prod'])
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter the password')
     }
+
     stages {
-        stage ('FirstStage') {
-            environment {
-                name = "shanthi"
-                cloud = "GCP"
-            }
+        stage('Parameters') {
             steps {
-                echo "welcome ${name}"
-                echo "you have enrolled to ${course} course"
-                echo "you are certified in ${cloud} cloud"
-            }
-        }
-        stage ('SecondStage') {
-            steps {
-                echo "welcome ${name}"
-                echo "you have enrolled to ${course} course"
-                // cloud variable is not accessible here as it is defined in first stage
-                echo "printing token : ${SONAR_CREDS}"
+                // code for parameters
+                echo "My app name is ${params.APPLICATION_NAME}"
+                echo "Do you want to run tests? ${params.RUN_TESTS}"
+                echo "Deploying into the ${params.ENV} environment"
+                echo "The password is ${params.PASSWORD}"
             }
         }
     }
-}  
+}
