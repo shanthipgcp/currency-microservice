@@ -1,7 +1,7 @@
 // parameters
 pipeline {
     agent {
-        label 'java-workernode'
+        label 'jenkins-workernode'
     }
 
     // tools {
