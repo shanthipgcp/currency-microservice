@@ -4,7 +4,7 @@ pipeline {
     }
     environment {
         // setting environment variable  key value ${key}
-        name = "Arjun Preeth"
+        name = "shiva"
         course = "Jenkins"
     }
     stages {
@@ -15,6 +15,14 @@ pipeline {
             steps {
                 echo "welcome ${name}"
                 echo "you have enrolled to ${course} course"
+                echo "you are certified in ${cloud} cloud"
+            }
+        }
+        stage ('SecondStage') {
+            steps {
+                echo "welcome ${name}"
+                echo "you have enrolled to ${course} course"
+                // cloud variable is not accessible here as it is defined in first stage
                 echo "you are certified in ${cloud} cloud"
             }
         }
