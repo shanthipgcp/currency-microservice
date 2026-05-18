@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage ('FirstStage') {
             environment {
+                name = "shanthi"
                 cloud = "GCP"
             }
             steps {
