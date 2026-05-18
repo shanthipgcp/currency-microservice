@@ -25,7 +25,6 @@ pipeline {
                 echo "welcome ${name}"
                 echo "you have enrolled to ${course} course"
                 // cloud variable is not accessible here as it is defined in first stage
-                echo "you are certified in ${cloud} cloud"
                 echo "printing token : ${SONAR_CREDS}"
             }
         }
